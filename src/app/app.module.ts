@@ -25,11 +25,6 @@ import { HelloComponent } from "./hello.component";
     }),
     // SCHEMATICS | @ngxs/logger-plugin | ng add
     NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
-    // SCHEMATICS | @ngxs/devtools-plugin | ng add
-    NgxsReduxDevtoolsPluginModule.forRoot({
-      disabled: environment.production,
-      maxAge: 10 // this value can come from an optional argument?
-    }),
     // SCHEMATICS | @ngxs/storage-plugin | ng add
     NgxsStoragePluginModule.forRoot({}),
     // SCHEMATICS | @ngxs/form-plugin | ng add
@@ -42,7 +37,13 @@ import { HelloComponent } from "./hello.component";
       typeKey: "type", // this value can come from an optional argument?
       reconnectInterval: 5000, // this value can come from an optional argument?
       reconnectAttempts: 10, // this value can come from an optional argument?
-    })
+    }),
+    // SCHEMATICS | @ngxs/devtools-plugin | ng add
+    // Should display a disclaimer message saying that the user should make sure that this is the last plugin added to the module
+    NgxsReduxDevtoolsPluginModule.forRoot({
+      disabled: environment.production,
+      maxAge: 10 // this value can come from an optional argument?
+    }),
   ],
   declarations: [AppComponent, HelloComponent],
   bootstrap: [AppComponent]
